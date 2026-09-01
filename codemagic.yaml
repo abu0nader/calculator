@@ -5,16 +5,11 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       flutter: stable
-      android_signing:
-        - key_credentials
     scripts:
-      - name: Set up local.properties
-        script: |
-          echo "flutter.sdk=$HOME/programs/flutter" > android/local.properties
       - name: Get dependencies
         script: |
           flutter pub get
-      - name: Build APK
+      - name: Build Optimized APK
         script: |
           flutter build apk --release --split-per-abi
     artifacts:
